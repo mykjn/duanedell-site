@@ -35,38 +35,48 @@ const musicData = [
 
 export default function MusicPage() {
   return (
-    <div className="min-h-screen bg-gray-100 py-16 px-6 text-center">
-      <h1 className="text-4xl font-bold mb-6">Our Music</h1>
-      <p className="text-lg text-gray-600 mb-10 max-w-xl mx-auto">
-        Explore our released singles and albums. Click on any cover art to learn more.
-      </p>
+    <main className="mx-auto w-full max-w-5xl px-4 pb-10 pt-20 lg:px-0 lg:pt-24 max-w-screen">
+      <section className="z-10 mx-auto flex justify-center">
+        <div className="flex w-full flex-col justify-center">
+          <div className="relative mt-6 flex w-full flex-wrap justify-start gap-4">
+            {musicData.map((item, index) => {
+              const path =
+                item.type === 'album'
+                  ? `/album/${encodeURIComponent(item.title)}`
+                  : `/music/${encodeURIComponent(item.title)}`;
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-        {musicData.map((item, index) => {
-          const path =
-            item.type === 'album'
-              ? `/album/${encodeURIComponent(item.title)}`
-              : `/music/${encodeURIComponent(item.title)}`;
+              return (
+                <Link
+                  key={`${item.title}-${item.type}`}
+                  to={path}
+                  className="w-full sm:w-[48%] lg:w-[23.7%] gap-x-4 flex flex-row md:flex-col pb-4 border-b-2 border-black md:border-0 md:pb-0"
+                >
+                  <div className="w-24 md:w-auto md:flex-1">
+                    <div className="h-full w-full overflow-hidden relative max-w-[3000px]">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="object-cover object-center block w-full"
+                        loading="lazy"
+                        aria-hidden="true"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-start justify-center w-full gap-px lg:mt-2">
+                    <small className="text-left !font-normal uppercase tracking-wider font-primary font-bold text-xs">
+                      {item.type}
+                    </small>
+                    <p className="font-primary leading-snug font-bold text-lg">
+                      {item.title}
+                    </p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
 
-          return (
-            <Link
-              key={index}
-              to={path}
-              className="group block hover:scale-105 transition-transform"
-            >
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-auto rounded-lg shadow-lg mb-3"
-              />
-              <h3 className="text-xl font-semibold text-gray-800 group-hover:text-black">
-                {item.title}
-              </h3>
-              <span className="text-sm uppercase text-gray-500">{item.type}</span>
-            </Link>
-          );
-        })}
-      </div>
-    </div>
+        </div>
+      </section>
+    </main>
   );
 }
