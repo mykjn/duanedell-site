@@ -31,12 +31,25 @@ export default function MusicDetail() {
     setTrack(foundTrack);
     setAlbumImage(foundAlbumImage);
 
+    // if (foundTrack?.lyricsUrl) {
+    //   fetch(foundTrack.lyricsUrl)
+    //     .then(res => res.text())
+    //     .then(setLyrics)
+    //     .catch(err => console.error('Lyrics not found', err));
+    // }
     if (foundTrack?.lyricsUrl) {
       fetch(foundTrack.lyricsUrl)
-        .then(res => res.text())
-        .then(setLyrics)
+        .then(res => {
+          console.log('Fetched lyrics file:', res); // Logs the response object
+          return res.text();
+        })
+        .then(text => {
+          console.log('Fetched lyrics text:', text); // Logs the actual lyrics text
+          setLyrics(text);
+        })
         .catch(err => console.error('Lyrics not found', err));
     }
+
   }, [title]);
 
   if (!track) return <p className="p-8 text-center">Track not found.</p>;
@@ -44,7 +57,7 @@ export default function MusicDetail() {
   return (
       <section className="z-10 mx-auto flex justify-center">
         <section className="w-full">
-          <div className="relative min-h-[83vh] w-full overflow-hidden bg-black m:min-h-[50vh]">
+          <div className="relative min-h-[83vh] w-full overflow-hidden bg-gray-800 m:min-h-[50vh]">
             <div className="absolute left-1/2 top-1/2 z-50 flex flex-1 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-10 md:flex-row">
               <div className="w-56">
                 <div style={{ overflow: 'hidden', position: 'relative', width: '100%', maxWidth: '3000px' }}>
@@ -113,7 +126,7 @@ export default function MusicDetail() {
                   <div className="mb-0 anchor-scroll flex items-center justify-between w-full py-3 border-b-[1px] undefined border-black">
                     <div className="!text-xl uppercase text-black font-primary font-bold text-2xl">Videos</div>
                   </div>
-                  <div className="border-b border-black pb-4 pt-6 last-of-type:mb-6">
+                  <div className="pb-4 pt-6 last-of-type:mb-6">
                     {track.videoUrl && (
                       <div className="relative flex justify-center w-full mx-auto aspect-video">
                         <iframe
@@ -127,7 +140,7 @@ export default function MusicDetail() {
                       </div>
                     )}
                   </div>
-                  <section className="mb-8 hidden md:block">
+                  <section className="mb-8 md:block">
                     <div className="mb-0 flex items-center justify-between w-full py-3 border-b-[1px] undefined border-black">
                       <div className="!text-xl uppercase text-black font-primary font-bold text-2xl">Written by</div>
                     </div>
