@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/duanedell-site/static/css/main.35bd9a41.css",
-    "main.js": "/duanedell-site/static/js/main.93a51a7b.js",
+    "main.css": "/duanedell-site/static/css/main.c019b481.css",
+    "main.js": "/duanedell-site/static/js/main.2379aef1.js",
     "static/media/DD.jpg": "/duanedell-site/static/media/DD.2a11bb1d08f9d22442b3.jpg",
     "static/media/gitagbo.jpg": "/duanedell-site/static/media/gitagbo.7fd05d798dcb1b222561.jpg",
     "static/media/ngalan.jpg": "/duanedell-site/static/media/ngalan.aefb7fcd0f2575cdbc25.jpg",
@@ -10,11 +10,11 @@
     "static/media/landing.jpg": "/duanedell-site/static/media/landing.d3a389295a8b847bcbd7.jpg",
     "static/media/taliwala.jpg": "/duanedell-site/static/media/taliwala.174626a9eee3e055ccb1.jpg",
     "index.html": "/duanedell-site/index.html",
-    "main.35bd9a41.css.map": "/duanedell-site/static/css/main.35bd9a41.css.map",
-    "main.93a51a7b.js.map": "/duanedell-site/static/js/main.93a51a7b.js.map"
+    "main.c019b481.css.map": "/duanedell-site/static/css/main.c019b481.css.map",
+    "main.2379aef1.js.map": "/duanedell-site/static/js/main.2379aef1.js.map"
   },
   "entrypoints": [
-    "static/css/main.35bd9a41.css",
-    "static/js/main.93a51a7b.js"
+    "static/css/main.c019b481.css",
+    "static/js/main.2379aef1.js"
   ]
 }
